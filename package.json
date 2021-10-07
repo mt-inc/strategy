@@ -26,7 +26,7 @@
     "typescript": "^4.4.2"
   },
   "dependencies": {
-    "@mt-inc/bot": "^1.0.4",
+    "@mt-inc/bot": "^1.0.5",
     "@mt-inc/indicators": "^1.0.3",
     "@mt-inc/utils": "^1.0.3"
   }
