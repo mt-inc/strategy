@@ -50,3 +50,8 @@ export class Simulate {
     this.math = new Math();
   }
 }
+
+export { MAbot } from './src/ma';
+export { MASimulation } from './src/ma/simulation';
+export { TrixBot } from './src/trix';
+export { TRIXSimulation } from './src/trix/simulation';
