@@ -71,7 +71,7 @@ export class MAbot {
     }
     this.useBinance = useBinance;
   }
-  work(data: number[], now: number, positions?: Positions | null, useBuffer = false) {
+  work(data: number[], now: number, positions?: Positions | null, useBuffer = false, time?: number) {
     if (this.maLow && this.maHigh && this.cross && positions && now !== 0 && !useBuffer) {
       const c = data[1];
       const l = data[2];
@@ -107,10 +107,10 @@ export class MAbot {
           if (this.useBinance) {
             return positions.closePosition(now, true);
           }
-          positions.closePosition(now);
-          positions.openPosition(now, SELL);
+          positions.closePosition(now, false, undefined, undefined, undefined, time);
+          positions.openPosition(now, SELL, time);
         } else if (!positions.active) {
-          positions.openPosition(now, SELL);
+          positions.openPosition(now, SELL, time);
         }
       }
       if (buy || ampUp) {
@@ -118,10 +118,10 @@ export class MAbot {
           if (this.useBinance) {
             return positions.closePosition(now, true);
           }
-          positions.closePosition(now);
-          positions.openPosition(now, BUY);
+          positions.closePosition(now, false, undefined, undefined, undefined, time);
+          positions.openPosition(now, BUY, time);
         } else if (!positions.active) {
-          positions.openPosition(now, BUY);
+          positions.openPosition(now, BUY, time);
         }
       }
     } else if (useBuffer && this.maHigh && this.maLow) {

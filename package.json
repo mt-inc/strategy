@@ -1,6 +1,6 @@
 {
   "name": "@mt-inc/strategy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Strategy for MT Inc. Project",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -26,7 +26,7 @@
     "typescript": "^4.4.2"
   },
   "dependencies": {
-    "@mt-inc/bot": "^1.0.0",
+    "@mt-inc/bot": "^1.0.1",
     "@mt-inc/indicators": "^1.0.2",
     "@mt-inc/utils": "^1.0.2"
   }
