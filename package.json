@@ -11,7 +11,7 @@
     "/dist"
   ],
   "scripts": {
-    "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "tsc": "rm -rf ./dist && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
     "push": "git push origin master",
     "pull": "git pull origin master",
     "commit": "git add . && git commit -m 'working'",

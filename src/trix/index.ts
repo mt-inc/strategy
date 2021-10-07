@@ -34,7 +34,7 @@ export class TrixBot {
     this.upper = settings.upper;
     this.lower = settings.lower;
   }
-  work(data: number[], now: number, positions?: Positions | null, useBuffer = false) {
+  work(data: number[], now: number, positions?: Positions | null, useBuffer = false, time?: number) {
     if (this.trix && this.sma && this.cross && positions && now !== 0 && !useBuffer) {
       const c = data[1];
       const tr = this.trix.nextValue(c);
@@ -60,10 +60,10 @@ export class TrixBot {
             if (this.useBinance) {
               return positions.closePosition(now, true);
             }
-            positions.closePosition(now);
-            positions.openPosition(now, SELL);
+            positions.closePosition(now, false, undefined, undefined, undefined, time);
+            positions.openPosition(now, SELL, time);
           } else if (!positions.active) {
-            positions.openPosition(now, SELL);
+            positions.openPosition(now, SELL, time);
           }
         }
         if (buy) {
@@ -71,10 +71,10 @@ export class TrixBot {
             if (this.useBinance) {
               return positions.closePosition(now, true);
             }
-            positions.closePosition(now);
-            positions.openPosition(now, BUY);
+            positions.closePosition(now, false, undefined, undefined, undefined, time);
+            positions.openPosition(now, SELL, time);
           } else if (!positions.active) {
-            positions.openPosition(now, BUY);
+            positions.openPosition(now, SELL, time);
           }
         }
       }
