@@ -72,9 +72,9 @@ export class TrixBot {
               return positions.closePosition(now, true);
             }
             positions.closePosition(now, false, undefined, undefined, undefined, time);
-            positions.openPosition(now, SELL, time);
+            positions.openPosition(now, BUY, time);
           } else if (!positions.active) {
-            positions.openPosition(now, SELL, time);
+            positions.openPosition(now, BUY, time);
           }
         }
       }
