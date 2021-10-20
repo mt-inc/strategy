@@ -85,7 +85,7 @@ export class MAbot {
       if (this.history === '3c') {
         const histLow = this.maLow.history;
         const histHigh = this.maHigh.history;
-        if (histLow && histHigh && histLow.length > 3 && histHigh.length > 3) {
+        if (histLow && histHigh && histLow.length >= 3 && histHigh.length >= 3) {
           prevLow = histLow[histLow.length - 3];
           prevHigh = histHigh[histHigh.length - 3];
         }

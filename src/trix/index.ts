@@ -46,7 +46,7 @@ export class TrixBot {
       if (this.history === '3c') {
         const histTrix = this.trix.history;
         const histSma = this.sma.history;
-        if (histTrix && histSma && histTrix.length > 3 && histSma.length > 3) {
+        if (histTrix && histSma && histTrix.length >= 3 && histSma.length >= 3) {
           prevTrix = histTrix[histTrix.length - 3];
           prevSma = histSma[histSma.length - 3];
         }
