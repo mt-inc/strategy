@@ -348,6 +348,8 @@ export class MASimulation extends Simulate {
         avgProfit: res.avgProfit,
         avgLoss: res.avgLoss,
         id: res.id,
+        fall: res.fall,
+        fallToProfit: res.fallToProfit,
       };
     }
     if (res.type === 'ema' || res.type === 'sma') {
@@ -371,6 +373,8 @@ export class MASimulation extends Simulate {
         avgProfit: res.avgProfit,
         avgLoss: res.avgLoss,
         id: res.id,
+        fall: res.fall,
+        fallToProfit: res.fallToProfit,
       };
     }
     return res;
