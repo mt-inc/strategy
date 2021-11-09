@@ -54,27 +54,32 @@ export class TrixBot {
       const crossed = this.cross.isCrossed(prevTrix, prevSma, this.trix.value, this.sma.value);
       let sell = crossed === SELL;
       let buy = crossed === BUY;
-      if (this.trix.value && (this.trix.value < this.lower || this.trix.value > this.upper)) {
-        if (sell) {
-          if (positions.active && positions.type === BUY) {
-            if (this.useBinance) {
-              return positions.closePosition(now, true);
+      if (prevTrix && prevSma && this.trix.value && this.sma.value) {
+        const point =
+          (-prevTrix * (this.sma.value - prevSma) - (prevTrix - this.trix.value) * prevSma) /
+          (-1 * (this.sma.value - prevSma) - (prevTrix - this.trix.value));
+        if (point < this.lower || point > this.upper) {
+          if (sell) {
+            if (positions.active && positions.type === BUY) {
+              if (this.useBinance) {
+                return positions.closePosition(now, true);
+              }
+              positions.closePosition(now, false, undefined, undefined, undefined, time);
+              positions.openPosition(now, SELL, time);
+            } else if (!positions.active) {
+              positions.openPosition(now, SELL, time);
             }
-            positions.closePosition(now, false, undefined, undefined, undefined, time);
-            positions.openPosition(now, SELL, time);
-          } else if (!positions.active) {
-            positions.openPosition(now, SELL, time);
           }
-        }
-        if (buy) {
-          if (positions.active && positions.type === SELL) {
-            if (this.useBinance) {
-              return positions.closePosition(now, true);
+          if (buy) {
+            if (positions.active && positions.type === SELL) {
+              if (this.useBinance) {
+                return positions.closePosition(now, true);
+              }
+              positions.closePosition(now, false, undefined, undefined, undefined, time);
+              positions.openPosition(now, BUY, time);
+            } else if (!positions.active) {
+              positions.openPosition(now, BUY, time);
             }
-            positions.closePosition(now, false, undefined, undefined, undefined, time);
-            positions.openPosition(now, BUY, time);
-          } else if (!positions.active) {
-            positions.openPosition(now, BUY, time);
           }
         }
       }
