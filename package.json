@@ -1,6 +1,6 @@
 {
   "name": "@mt-inc/strategy",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Strategy for MT Inc. Project",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
